@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 
-import { adminJS, controllersAdminJS } from './AdminJS.js';
+import { adminJS, controllersAdminJS } from './services/AdminJS.js';
 
 class AppController {
     

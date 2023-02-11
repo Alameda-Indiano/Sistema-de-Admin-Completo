@@ -1,6 +1,6 @@
-require('dotenv').config();
+import 'dotenv/config';
 
-module.exports = {
+const config = {
   dialect: 'postgres',
   host: process.env.DB_HOST,
   username: process.env.DB_USER,
@@ -8,7 +8,9 @@ module.exports = {
   database: process.env.DB_NAME, 
   define: {
     timestamp: true, 
-    undescored: true, 
-    undescoredAll: true, 
+    underscored: true, 
+    underscoredAll: true, 
   }
 };
+
+export default config;
