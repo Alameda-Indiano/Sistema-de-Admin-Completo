@@ -38,8 +38,8 @@ class User extends Model {
     });
   };
 
-  static associations() {
-
+  static associate(models) {
+    this.hasMany(models.Project)
   }
 
 };

@@ -1,17 +1,11 @@
 import AdminJS from 'adminJS';
-import User from '../models/user.js';
+import Project from '../models/project.js';
 
 export default {
-    resource: User,
+    resource: Project,
     options: {
-        actions: {
-            resetPassword: {
-                actionType: 'record',
-                icon: 'Password'
-            }
-        },
         parent: {
-            icon: 'User'
+            icon: 'Roadmap'
         },
         properties: {
             id: {
@@ -23,48 +17,30 @@ export default {
                     edit: false
                 }
             },
-            initials: {
-                position: 2,
-                isVisible: {
-                    list: true,
-                    filter: false,
-                    show: true,
-                    edit: false
-                }
-            },
             name: {
+                position: 2,
+                isRequired: true
+            },
+            description: {
                 position: 3,
-                isRequired: true
+                type: 'textarea'
             },
-            email: {
-                position: 4,
-                isRequired: true
+            userId: {
+                position: 4
             },
-            role: {
-                position: 5,
-                isRequired: true,
-                availableValues: [
-                    { value: 'admin', label: 'Administrador' },
-                    { value: 'manager', label: 'Gerente' },
-                    { value: 'developer', label: 'Desenvolvedor' },
-                ]
+            user_id: {
+                isVisible: false
             },
             status: {
-                position: 6,
+                position: 5,
                 isRequired: true,
                 availableValues: [
                     { value: 'active', label: 'Ativo' },
                     { value: 'archived', label: 'Arquivado' }
                 ]
             },
-            password: {
-                isVisible: true
-            },
-            password_hash: {
-                isVisible: true
-            },
             created_at: {
-                position: 7,
+                position: 6,
                 isVisible: {
                     list: true,
                     filter: true,
@@ -73,7 +49,7 @@ export default {
                 }
             },
             updated_at: {
-                position: 8,
+                position: 7,
                 isVisible: {
                     list: true,
                     filter: true,

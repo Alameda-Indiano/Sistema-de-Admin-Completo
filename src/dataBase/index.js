@@ -2,8 +2,11 @@ import { Sequelize } from "sequelize";
 import config from '../config/dataBase.js';
 
 import User from "../models/user.js";
+import Project from "../models/project.js";
+
 const models = [
-  User
+  User,
+  Project
 ];
 
 class DataBase {
