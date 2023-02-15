@@ -3,10 +3,12 @@ import config from '../config/dataBase.js';
 
 import User from "../models/user.js";
 import Project from "../models/project.js";
+import Task from "../models/task.js";
 
 const models = [
   User,
-  Project
+  Project,
+  Task,
 ];
 
 class DataBase {
@@ -32,4 +34,3 @@ class DataBase {
 };
 
 export default new DataBase();
-
