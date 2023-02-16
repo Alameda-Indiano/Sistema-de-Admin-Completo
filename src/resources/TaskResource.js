@@ -1,4 +1,7 @@
 import Task from '../models/task.js';
+import * as path from 'path';
+
+import uploadFileFeature from '@adminjs/upload';
 
 export default {
     resource: Task,
@@ -29,13 +32,11 @@ export default {
                     edit: true
                 },
                 type: 'richtext',
-                props: {
-                    quill: {
-                        modules: {
-                            toolbar: [['bold', 'italic'], ['link', 'image']],
-                        },
-                    }
-                }
+                custom: {
+                  modules: {
+                    toolbar: [['bold', 'italic'], ['link', 'image']],
+                  },
+                },
             },
             due_date: {
                 position: 4
@@ -44,10 +45,10 @@ export default {
                 position: 5
             },
             order: {
-                position: 6
+                position: 6,
             },
             status: {
-                order: 7,
+                position: 7,
                 isRequired: true,
                 availableValues: [
                     { value: "backlog", label: 'Backlog' },
@@ -58,18 +59,12 @@ export default {
                 ]
             },
             userId: {
-                order: 8,
+                position: 8,
                 isRequired: true,
             },
             projectId: {
-                order: 9,
+                position: 9,
                 isRequired: true
-            },
-            user_id: {
-                isVisible: false
-            },
-            project_id: {
-                isVisible: false
             },
             created_at: {
                 position: 10,
@@ -88,7 +83,50 @@ export default {
                     show: true,
                     edit: false
                 }
+            },
+            attachment: {
+                position: 12  
+            },
+            user_id: {
+                isVisible: false
+            },
+            project_id: {
+                isVisible: false
+            },
+            path: {
+                isVisible: false
+            },
+            folder: {
+                isVisible: false
+            },
+            type: {
+                isVisible: false
+            },
+            filename: {
+                isVisible: false
+            },
+            size: {
+                isVisible: false
             }
         }
-    }
+    },
+    features: [uploadFileFeature({
+        provider: {
+            local: {
+                bucket: 'C:/Estudos - Alura/Estudos a Parte/Sistema-de-Admin-Completo/uploads'
+            }
+        },
+        properties: {
+            key: 'path',
+            bucket: 'folder',
+            mimeType: 'type',
+            size: 'size',
+            filename: 'filename',
+            file: 'attachment',
+        },
+        validation: {
+            mimeTypes: ['image/png', 'application/pdf', 'application/zip'],
+            maxSize: 5 * 1024 * 1024
+        }
+    })]
 };
